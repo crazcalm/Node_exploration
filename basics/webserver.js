@@ -1,3 +1,5 @@
+// Test scipt using: curl -i http://localhost:8080
+
 // imports get passed into a variable
 var http = require("http");
 
