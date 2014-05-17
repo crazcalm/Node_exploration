@@ -87,4 +87,47 @@ var x = 10, y = 0;
 
 x/y == Infinity // true
 
-// You can use the functions parseInt and parse
+// You can use the functions parseInt and parseFloat to convert strings
+// to numbers
+
+parseInt('32523523626263'); // 32523523626263
+
+parseFloat('82959.248945895'); // 82959.248945895
+
+parseInt('234.43634'); // 234
+
+parseFloat('10'); // 10
+
+// Finally, to test whether a given number is a valid finite number, use the
+// isFinite function
+
+isFinite(10/5); // true
+
+isFinite(10/0); // false
+
+
+/*
+
+Booleans:
+---------
+
+  Values can be either be true or false, and although you technically can
+convert values to boolean with the Boolean function, you almost never use it
+because the language converts everything to boolean when needed, according to
+the following rules:
+
+1. false, 0, empty string(""), NaN, null, and undefined all evaluate to false.
+
+2. All other values evaluate to true.
+
+*/
+
+
+/*
+
+Strings:
+--------
+
+
+*/
+
