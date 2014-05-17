@@ -128,6 +128,53 @@ the following rules:
 Strings:
 --------
 
+  Strings in JavaScript are sequences of Unicode characters that can represent
+a vast majority of the characters in the world, including these used in most
+Asian languages.
+
+  There is no seperate char or character data type in the language; you just
+use a string of length 1 to represent these.
+
+
+  Strings can be wrapped in single or double quotation marks. They are
+functionally equivalent, and you are free to use whatever you want.
 
 */
 
+
+// To get the length of a string in JavaScript, just use the length property
+
+var x = "cat"; // undefined
+
+x.length; // 3
+
+"cat".length // 3
+
+
+// To add two strings together, you an use the + operator
+
+"cats" + " go " + "meow"; // cats go meow
+
+// If you start throwing other types into the mix, JavaScript converts them as
+// best it can:
+
+var distance = 25;
+
+"I ran " + distance + " kilometers today"; // I ran 25 kilometers today
+
+// Note that this can provide some interesting results if you start mixing
+// expressions a bit too much
+
+5 + 3 + " is my favorite number"; // 8 is my favorite number
+
+// if you really want "53" to be your favorite number, you can just prefix
+// it all with an empty string to force the conversion earlier.
+
+"" + 5 + 3 + " is my favorite number"; // 53 is my favorite number
+
+/*
+
+String Functions:
+----------------
+
+*/
