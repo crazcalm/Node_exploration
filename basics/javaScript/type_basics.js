@@ -174,7 +174,31 @@ var distance = 25;
 
 /*
 
-String Functions:
-----------------
+Objects:
+--------
+
+  To create an object, you can use either of the following although the latter,
+known as 'object literal syntax,' is almost always preferred nowadays:
+
+var ol = new Object();
+
+var o2 = {};
+*/
+
+// You can also specifiy the contents of objects using object literal syntax,
+// where you can specify member names and values at initialization time:
+
+var user = {
+
+  first_name : 'marc',
+  last_name  : 'wandschneider',
+  age        : Infinity,
+  citizenship: 'man of the world'
+};
+
+/*
+
+About JSON:
+----------
 
 */
