@@ -196,9 +196,27 @@ var user = {
   citizenship: 'man of the world'
 };
 
+// To remove a property from an object, you can use the delete keyword
+
+delete user.age;
+
+// There are no size of length properies or methods on object. To get around
+// this, you can write the following (V8 js):
+
+object.key(user).length; // 3
+
 /*
 
 About JSON:
 ----------
 
+  JSON (JavaScript Object Notation) is extremely similar to object notation
+with two key differences: Wrapping the property names in single or double
+quotes is mandatory. Furthermore, all strings should be double-quoted as follows:
+
+var obj = {
+
+  "first_name" : "Marc",
+  "last_name"  : "Wandscheinder"
+};
 */
