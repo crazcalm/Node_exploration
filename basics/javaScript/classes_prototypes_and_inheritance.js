@@ -52,3 +52,71 @@ you having to do extra work.
 */
 
 
+/*
+
+Protoypes and Inheritance:
+--------------------------
+
+  By default, all objects in JavaScript have a prototype object, which is the
+mechanism through which they inherit properties and methods.
+
+  Change the Shape (Shape2) class created earlier so that all inheriting
+objects also get the x and y properties, as well as the methods you have declared
+on it:
+*/
+
+function Shape2 () {
+}
+
+Shape2.prototype.x = 0;
+Shape2.prototype.y = 0;
+
+Shape2.prototype.move = function(x,y) {
+
+  this.X = x;
+  this.Y = y;
+}
+
+Shape2.prototype.distance_from_origin = function () {
+
+  return Math.sqrt(this.X * this.X + this.Y * this.Y);
+}
+
+Shape2.prototype.area = function () {
+
+  throw new Error("I do not have a shape yet");
+}
+
+var s = new Shape2();
+s.move(10,10);
+console.log(s.distance_from_origin());
+
+
+// We have set ourselves up to easily extend the Shape2 class.
+
+function Square () {
+}
+
+Square.prototype = new Shape2();
+Square.prototype.__proto__ = Shape2.prototype;
+
+Square.prototype.Width = 0;
+Square.prototype.area = function () {
+  return this.Width * this.Width;
+}
+
+var sq = new Square();
+sq.move(-5, -5);
+sq.Width = 5;
+console.log(sq.area());
+console.log(sq.distance_from_origin());
+
+/*
+
+  The code for this new Square class makes use of a new JavaScript language
+feature seen in V8 and a few other implementations: the __proto__ property.
+It lets you tell JavaScript that a new class you are declaring should have the
+base prototype of the specified type, and then you can extend it from there.
+
+*/
+
