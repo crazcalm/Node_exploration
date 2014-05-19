@@ -8,7 +8,7 @@ languages in that there is no explicit class keyword or type. Instead, classes
 are all declared functions:
 */
 
-function shape () {
+function Shape () {
 
   this.X = 0;
   this.Y = 0;
@@ -27,4 +27,4 @@ function shape () {
 
 var s = new Shape();
 s.move(10,10);
-console.log(s.distance_from_origin)
+console.log(s.distance_from_origin())
