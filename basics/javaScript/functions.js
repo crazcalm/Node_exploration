@@ -104,7 +104,7 @@ function play_with_pets(){
   console.log(pet);
 }
 
-play_with_pets(); // dog
+play_with_pets(); // dogs
 console.log(pet); // cat
 
 // Combining this scoping with ananymous functions can be a good way to do
@@ -118,10 +118,10 @@ var radius = 3;
 var volume;
 
 //declare and immediately call anon function to create scope
-(function(){
+(function(){ // Note: This is a self invoking function!
 
   var pir2 = Math.PI * radius * radius; // temp var
   volume = (pir2 * height)/ 3;
-})();
+})(); // the '()' is apart of the self invoking syntax!
 
 console.log(volume);
