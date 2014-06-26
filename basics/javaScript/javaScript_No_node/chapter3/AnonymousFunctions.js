@@ -18,7 +18,8 @@ assigned to any variable and therefore don't have a name.
 used without being assigned a name.
 */
 
-function(a){return a};
+// Node says that there is a syntax error!
+//function(a){return a};
 
 /*
   Now, these anonymous pieces of data scattered around your code are not really
