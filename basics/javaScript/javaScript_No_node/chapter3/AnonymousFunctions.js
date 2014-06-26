@@ -96,4 +96,46 @@ demonstrate the benefits of the callback functions, namely:
     * They can help with performance
 */
 
+/*
+                Callback Examples
+                -----------------
+
+  Take a look at this common scenario: you have a function that returns a
+value, which you then pass to another functions. In our example, the first
+function, multiplyByTwo(), accepts three parameters, loops through them,
+multiplying by two and returns an array containing the result. The second
+function, addOne(), takes a value, adds one to it and returns it.
+*/
+
+function multiplyByTwo(a, b, c){
+  var i, ar = [];
+  for(i = 0; i < 3; i++){
+    ar[i] = arguments[i] * 2;
+  }
+  return ar;
+}
+
+function addOne(a){
+  return a +1;
+}
+
+/*
+  Testing the functions we have so far:
+*/
+
+console.log("multiplyByTwo(1,2,3): " +multiplyByTwo(1,2,3))
+console.log("addOne(100):  "+addOne(100))
+
+/*
+  Now let's say we want to have an array that contains three elements, and each
+of the elements is to be passed through both functions. First, let's start
+with a call to multiplyByTwo().
+*/
+
+var myarr = multiplyByTwo(10, 20,30)
+
+/*
+  Now loop through each element, passing it to addOne().
+*/
+
 
