@@ -40,5 +40,36 @@ function a(){
   If you call this function for the first time, it will:
 
     * Console.log(a!) (consider this as being the one-off preperatory work)
-    * Redefine
+    * Redefine the global variable a, assigning a new function to it.
+
+  Every subsequent time that the function is called, it will console.log(b!).
+
+  Here's another example that combines several of the techniques discussed
+in the last few sections of this chapter:
+*/
+
+var a = function(){
+  function someSetup(){
+    var setup = "done";
+  }
+
+  function actualWork(){
+    console.log("Worky-worky");
+  }
+
+  someSetup();
+  return actualWork;
+}();
+
+/*
+  In this example:
+
+    * You have private functions--someSetup() and actualWork().
+    * You have self-invoking function
+    * The function executes for the first time, calls someSetup() and then
+      returns a reference to the variable actualWork, which is a function.
+      Notice that there are no parentheses in the return, because it is
+      returning a function reference, not the result of invoking the function.
+    * Because the whole thing starts with var a = ..., the value returned by
+      the self-invoked function is assaigned to a.
 */
