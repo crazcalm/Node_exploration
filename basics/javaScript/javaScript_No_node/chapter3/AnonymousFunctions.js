@@ -138,4 +138,33 @@ var myarr = multiplyByTwo(10, 20,30)
   Now loop through each element, passing it to addOne().
 */
 
+for(var i = 0; i <3; i++){myarr[i] = addOne(myarr[i]);}
+console.log("for loop plus addOne(): "+myarr);
+
+/*
+  As you see everything works fine, but there's still room for improvement. One
+thing is that there was two loops. Loops can be expensive if they go through
+a lot of repetitions. We can achieve the result we want with one loop only.
+Here's how to modify multiplyByTwo() so that it accepts a callback function
+and invokes callbacks on every iteration:
+*/
+
+function multiplyByTwo2(a,b,c, callback){
+  var i, ar= [];
+  for(i =0; i <3; i++){
+    ar[i] = callback(arguments[i]*2);
+  }
+  return ar;
+}
+
+/*
+  By using the modified function, the whole work is now done with just one
+function call, which passes the start values and the callback.
+*/
+
+myarr = multiplyByTwo2(1,2,3, addOne);
+console.log("multiplyByTwo2 with callback addOne: " + myarr);
+
+myarr = multiplyByTwo2(1,2,3, function(a){return a+1;});
+console.log("multiplyByTwo2 with anonymous function: " + myarr);
 
