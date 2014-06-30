@@ -17,5 +17,20 @@ function setup(x){
   var i =0;
   return function(){
     return x[i++];
-  }
+  };
 }
+
+/*
+  Calling the setup() function with a data array will create the next() function
+for you.
+*/
+
+var next = setup(['a', 'b', 'c']);
+
+/*
+  From there it's easy and fun: calling the same function over and over again
+gives you the next element.
+*/
+console.log(next ());
+console.log(next());
+console.log(next());
