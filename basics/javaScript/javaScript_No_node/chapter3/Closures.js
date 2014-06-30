@@ -130,3 +130,130 @@ to f()'s scope. n() will keep its access to f()'s scope, even though n() becomes
 part of the global space.
 */
 
+/*
+A Definition and Closure #3:
+-----------------------------
+
+  Based on what we have discussed so far, you can say that a closure is created
+when a function keeps a link to its parent's scope even after the parent
+has returned.
+
+  When you pass an argument to a function it becomes available as a local
+variable. You can create a function that returns another function, which in
+turn returns its parent's argument.
+*/
+
+function f6(arg){
+  var n6 = function(){
+    return arg;
+  };
+  arg++
+  return n6;
+}
+
+var test = f6(123);
+console.log(test());
+
+/*
+  Notice how arg++ was incremented after the function was defined and yet,
+when called test() returned the updated value. The demonstrates how the
+function binds to its scope, not to the current variables and their values
+found in the scope.
+*/
+
+/*
+Closures in a Loop:
+-------------------
+
+  Here's something that can easily lead to hard-to-spot bugs, because, on the
+surface, everything looks normal.
+
+  Let's loop three times, each time creating a new function that returns the
+loop sequence number. The new functions will be added to an array and we'll
+return the array at the end. Here's the function.
+*/
+
+function f7(){
+  var a= [];
+  var i;
+  for (i =0; i < 3; i++){
+    a[i] = function(){
+      return i;
+    }
+  }
+  return a;
+}
+
+/*
+  Let's run the function, assigning the result to the array a7.
+*/
+
+var a7 = f7();
+for(var i = 0; i <3; i++){
+  console.log(a7[i]())
+}
+
+/*
+  Hmm, not quite what we expected. What happened here? We created three
+closures that all point to the same local vaiable i. Closures don't remember
+the value, they only link (reference) the i variable and will return its
+current value. After the loop, i's value is 3. So all the three functions
+point to the same value.
+
+(Why 3 and not 2 is another good question to think about, for better
+understanding the for loop.)
+
+So how do you implement the correct behavior? You need three different
+variables. An elegant solution is to use another closure:
+*/
+
+function f8(){
+  var a=[];
+  var i;
+  for (i=0; i<3;i++){
+    a[i] = (function(x){
+      return function(){
+        return x;
+      }
+    })(i);
+  }
+  return a;
+}
+
+/*
+  This gives the expected result:
+*/
+
+var a8 = f8();
+for (var i=0; i<3;i++){
+  console.log(a8[i]());
+}
+
+/*
+  Here, instead of just creating a function that returns i, you pass i to
+another self-executing function. For this function, i becomes the local value
+x, and x has a different value every time.
+
+  Alternatively, you can use a "normal" (as opposed to self-invoking) inner
+function to achieve the same result. The key is to use the middle function to
+"localize" the value of i at every iteration.
+*/
+
+function f9(){
+  function makeClosure(x){
+    return function(){
+      return x;
+    }
+  }
+  var a = [];
+  var i;
+  for(i=0; i<3; i++){
+    a[i] = makeClosure(i);
+  }
+  return a;
+}
+
+var a8 = f8();
+for(var i=0; i<3; i++){
+  console.log(a8[i]());
+}
