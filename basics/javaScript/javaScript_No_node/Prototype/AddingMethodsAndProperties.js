@@ -49,3 +49,11 @@ Gadget.prototype = {
     return "Price: " + this.price + ", rating: " + this.rating;
   }
 */
+
+/*
+  It's important to note that the prototype is "live." Objects are passed by
+reference in JavaScript, and therefore the property is not copied with every
+new object instance. What does that mean in practice? It means that you can
+modify the prototype at anytime and all objects (even those created before the
+modification) will inherit the changes.
+*/
