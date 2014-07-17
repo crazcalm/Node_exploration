@@ -53,4 +53,6 @@ time.
 
 extend2(TwoDShape, Shape);
 var td = new TwoDShape();
-
+console.log(td.__proto__.hasOwnProperty('name'));
+console.log(td.__proto__.hasOwnProperty('toString'));
+console.log(td.__proto__.toString === Shape.prototype.toString);
