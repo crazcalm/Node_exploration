@@ -52,3 +52,22 @@ console.log(B.prototype.stuff === A.prototype.stuff);
 B.prototype.name += "b";
 console.log(B.prototype.name);
 console.log(A.prototype.name);
+
+/*
+  Changing B's stuff property, however, affects A, because both prototypes
+point to the same array.
+*/
+
+B.prototype.stuff.push(4,5,6);
+
+console.log(A.prototype.stuff);
+
+/*
+  It's a different story when you completely overwrite B's copy of stuff with
+another object (as opposed to modifying the existing one). In this case, A's
+stuff keeps pointing to the old object, while B's points to a new one.
+*/
+
+B.prototype.stuff = ['a', 'b', 'c'];
+console.log(B.prototype.stuff);
+console.log(A.prototype.stuff);
